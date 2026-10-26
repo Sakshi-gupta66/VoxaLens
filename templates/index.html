@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoxLens | Live Lip Reading</title>
+  <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+  <link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/style.css') }}"
+>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">VoxLens<span>AI</span></a>
+    <div class="status">
+      <span id="statusDot" class="dot"></span>
+      <span id="statusText">Camera offline</span>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="intro">
+      <p class="eyebrow">VISUAL SPEECH RECOGNITION</p>
+      <h1>Words without <span>sound.</span></h1>
+      <p>Turn visible lip movements into predicted text.</p>
+    </section>
+
+    <section class="dashboard">
+      <div class="camera-card">
+        <div class="card-heading">
+          <h2>Live camera</h2>
+          <span id="cameraBadge">OFFLINE</span>
+        </div>
+
+        <div class="video-container">
+          <video id="camera" autoplay muted playsinline></video>
+          <div id="placeholder" class="placeholder">
+            <div class="camera-icon">◎</div>
+            <p>Your camera preview will appear here</p>
+            <small>Position your face inside the frame</small>
+          </div>
+          <div class="face-guide"></div>
+          <div class="camera-label">LIVE FEED</div>
+        </div>
+
+        <div class="controls">
+          <button id="startCamera" class="primary">
+            Enable camera
+          </button>
+          <button id="stopCamera" class="secondary" disabled>
+            Stop camera
+          </button>
+        </div>
+
+        <div class="controls">
+          <button id="startTranscription" class="primary" disabled>
+            Start transcription
+          </button>
+          <button id="pauseTranscription" class="secondary" disabled>
+            Pause
+          </button>
+        </div>
+
+        <p class="hint" id="activity">
+          Allow camera access to begin.
+        </p>
+      </div>
+
+      <div class="transcript-card">
+        <div class="card-heading">
+          <h2>Predicted speech</h2>
+          <span class="live-label">LIVE CAPTIONS</span>
+        </div>
+
+        <div id="transcript" class="transcript" aria-live="polite">
+          <p class="empty">
+            Your predicted words will appear here
+            once analysis begins.
+          </p>
+        </div>
+
+        <div class="transcript-footer">
+          <span id="wordCount">0 words</span>
+          <div class="text-controls">
+            <button id="copyText" disabled>Copy</button>
+            <button id="clearText">Clear</button>
+          </div>
+        </div>
+
+        <div class="notice">
+          <strong>Experimental transcription</strong>
+          <p>Predictions may be inaccurate, especially when
+          mouth movements are unclear.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- <script src="/static/js/app.js"></script> -->
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</body>
+</html>
